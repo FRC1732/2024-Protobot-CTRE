@@ -1,0 +1,55 @@
+import com.revrobotics.CANSparkMax;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class intake{
+    private CANSparkMax intakeLCanSparkMax;
+    private CANSparkMax intakeRCanSparkMax;
+    private ShuffleboardTab intakeMotors;
+    private double motorSetpt;
+    private double motor2Setpt;
+    
+    public intake() {
+        intakeLCanSparkMax = new CANSparkMax(INTAKE_MOTOR_CAN_ID, canSparkMax.MotorType.kBrushless);
+        intakeRCanSparkMax = new CANSparkMax(INTAKE_SECOND_MOTOR_CAN_ID, canSparkMax.MotorType.kBrushless);
+
+        intakeLCanSparkMax.set(Constants.INTAKE_MOTOR_L_INVERTED);
+        intakeRCanSparkMax.set(Constants.INTAKE_MOTOR_R_INVERTED);
+
+        setUpShuffleboard();
+        //establishes motors, sets setpoints to 0 sets up shuffleboard
+    }
+
+    @Override
+    public void periodic(){
+        //method called once per scheduler run
+    }
+
+    public void takeIN() {
+        intakeLCanSparkMax.set(-0.5);
+        intakeRCanSparkMax.set(-0.5);
+    }
+
+    public void spitOUT() {
+        intakeLCanSparkMax.set(0.5);
+        intakeRCanSparkMax.set(0.5);
+    }
+
+    public void stop() {
+        intakeLCanSparkMax.set(0);
+        intakeRCanSparkMax.set(0);
+    }
+
+
+    public void setUpShuffleboard() {
+        ShuffleboardTab intakeMotors;
+        intakeMotors = Shuffleboard.getTab("Intake Motors");
+        intakeMotors.addBoolean("Inverted", () -> intakeLCanSparkMax.getInverted());
+        intakeMotors.addBoolean("Inverted", () -> intakeRCanSparkMax.getInverted());
+        intakeMotors.addDouble("Velocity1", () -> intakeLCanSparkMaxcanSparkMax.getEncoder().getVelocity());
+        intakeMotors.addDouble("Velocity2", () -> intakeRCanSparkMax.getEncoder().getVelocity());
+      
+    }
+}
