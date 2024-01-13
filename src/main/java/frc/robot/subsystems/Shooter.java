@@ -40,6 +40,10 @@ public class Shooter extends SubsystemBase {
     shooterMotorLow.set(SHOOTER_MOTOR_LOW_SPEED);
 
   }
+  public void stopShooter() {
+    shooterMotorHigh.set(0);
+    shooterMotorLow.set(0);
+  }
 
   public void setUpShuffleboard() {}
   
@@ -47,4 +51,9 @@ public class Shooter extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+public void stop() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'stop'");
+}
 }

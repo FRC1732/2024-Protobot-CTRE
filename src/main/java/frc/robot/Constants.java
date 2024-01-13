@@ -6,8 +6,8 @@ package frc.robot;
 
 /** Add your docs here. */
 public class Constants {
-    public static final int SHOOTER_MOTOR_HIGH_CAN_ID = 1;
-    public static final int SHOOTER_MOTOR_LOW_CAN_ID = 2;
+    public static final int SHOOTER_MOTOR_HIGH_CAN_ID = 61;
+    public static final int SHOOTER_MOTOR_LOW_CAN_ID = 62;
     public static final int SHOOTER_MOTOR_TILT_CAN_ID = 3;
     public static final int FEEDER_MOTOR_LEFT_CAN_ID = 4;
     public static final int FEEDER_MOTOR_RIGHT_CAN_ID = 5;

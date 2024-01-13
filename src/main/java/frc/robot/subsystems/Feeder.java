@@ -29,13 +29,18 @@ public static Double FEEDER_MOTOR_RIGHT_SPEED = -0.50;
 
   }
 
-  public void runFeederOut() {
-    feederMotorLeft.set(FEEDER_MOTOR_LEFT_SPEED);
-    feederMotorRight.set(FEEDER_MOTOR_RIGHT_SPEED);
+  public void stopFeederIn() {
+    feederMotorLeft.set(0);
+    feederMotorRight.set(0);
 
   }
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  }
+
+  public void stop() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'stop'");
   }
 }
