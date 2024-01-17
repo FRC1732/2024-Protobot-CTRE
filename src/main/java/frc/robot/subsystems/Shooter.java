@@ -45,7 +45,16 @@ public class Shooter extends SubsystemBase {
     shooterMotorLow.set(0);
   }
 
-  public void setUpShuffleboard() {}
+  public void setUpShuffleboard() {
+    ShuffleboardTab shooterMotors;
+    shooterMotors = Shuffleboard.getTab("Shooter Motors");
+    shooterMotors.addDouble("HighVelocity", () -> shooterMotorHigh.getEncoder().getVelocity());
+    shooterMotors.addDouble("LowVelocity", () -> shooterMotorLow.getEncoder().getVelocity());
+    shooterMotors.addDouble("TiltVelocity", () -> shooterMotorTilt.getEncoder().getVelocity());
+    shooterMotors.addDouble("TiltAngle", () -> shooterMotorTilt.getEncoder().getPosition());
+    //shooterMotors.addDouble("HighAcceleration", () -> shooterMotorHigh.
+
+  }
   
   @Override
   public void periodic() {
