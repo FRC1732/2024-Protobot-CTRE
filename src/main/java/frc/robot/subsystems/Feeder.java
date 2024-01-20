@@ -38,9 +38,4 @@ public static Double FEEDER_MOTOR_RIGHT_SPEED = -0.50;
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
-  public void stop() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'stop'");
-  }
 }
