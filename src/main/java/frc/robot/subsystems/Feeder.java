@@ -6,6 +6,8 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -21,6 +23,8 @@ public static Double FEEDER_MOTOR_RIGHT_SPEED = -0.50;
 
     feederMotorLeft.setInverted(Constants.SHOOTER_MOTOR_LEFT_INVERTED);
     feederMotorRight.setInverted(Constants.SHOOTER_MOTOR_RIGHT_INVERTED);
+    setUpShuffleboard();
+
   }
 
   public void runFeederIn() {
@@ -34,6 +38,13 @@ public static Double FEEDER_MOTOR_RIGHT_SPEED = -0.50;
     feederMotorRight.set(0);
 
   }
+  public void setUpShuffleboard() {
+    ShuffleboardTab feederMotors;
+    feederMotors = Shuffleboard.getTab("Feeder Motors");
+    feederMotors.addDouble("LeftMotor_Velocity", () -> feederMotorLeft.getEncoder().getVelocity());
+    feederMotors.addDouble("RightMotor_Velocity", () -> feederMotorRight.getEncoder().getVelocity());
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
