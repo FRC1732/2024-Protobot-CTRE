@@ -1,10 +1,17 @@
+package frc.robot.subsystems;
+
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+
+import com.revrobotics.CANSparkMax;
+
+import edu.wpi.first.hal.CANAPITypes.CANDeviceType;
+import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.SubsystemBase; 
 import frc.robot.Constants;
 
-public class intake{
+public class Intake{
     private CANSparkMax intakeLCanSparkMax;
     private CANSparkMax intakeRCanSparkMax;
     private ShuffleboardTab intakeMotors;
@@ -18,17 +25,17 @@ public class intake{
 
     
     public intake() {
-        intakeLCanSparkMax = new CANSparkMax(INTAKE_MOTOR_CAN_ID, canSparkMax.MotorType.kBrushless);
-        intakeRCanSparkMax = new CANSparkMax(INTAKE_SECOND_MOTOR_CAN_ID, canSparkMax.MotorType.kBrushless);
+        intakeLCanSparkMax = new CANSparkMax(Constants.INTAKE_MOTOR_CAN_ID,  CANSparkMax.MotorType.kBrushless);
+        intakeRCanSparkMax = new CANSparkMax(Constants.INTAKE_SECOND_MOTOR_CAN_ID, CANSparkMax.MotorType.kBrushless);
 
-        intakeLCanSparkMax.set(Constants.INTAKE_MOTOR_L_INVERTED);
-        intakeRCanSparkMax.set(Constants.INTAKE_MOTOR_R_INVERTED);
+        intakeLCanSparkMax.setInverted(Constants.INTAKE_MOTOR_L_INVERTED);
+        intakeRCanSparkMax.setInverted(Constants.INTAKE_MOTOR_R_INVERTED);
 
         setUpShuffleboard();
         //establishes motors, sets setpoints to 0 sets up shuffleboard
     }
 
-    @Override
+    
     public void periodic(){
         //method called once per scheduler run
     }
@@ -54,14 +61,14 @@ public class intake{
         intakeMotors = Shuffleboard.getTab("Intake Motors");
         intakeMotors.addBoolean("Inverted", () -> intakeLCanSparkMax.getInverted());
         intakeMotors.addBoolean("Inverted", () -> intakeRCanSparkMax.getInverted());
-        intakeMotors.addDouble("VelocityL", () -> intakeLCanSparkMaxcanSparkMax.getEncoder().getVelocity());
+        intakeMotors.addDouble("VelocityL", () -> intakeLCanSparkMax.getEncoder().getVelocity());
         intakeMotors.addDouble("VelocityR", () -> intakeRCanSparkMax.getEncoder().getVelocity());
-        intake.Motors.addDouble("AccelerationL",()-> getAcceleration());
-        intake.Motors.addDouble("AccelerationR", ()-> getAcceleration());
+        intakeMotors.addDouble("AccelerationL",()-> getAcceleration());
+        intakeMotors.addDouble("AccelerationR", ()-> getAcceleration());
 
 
-        speedEntryIntakeL = intakeMotors.add("MotorHighSpeed", intakeMotorLSpeed).getEntry();
-        speedyEntryIntakeR = intakeMotors.add("MotorHighSpeed", intakeMotorRSpeed).getEntry();
+        speedEntryIntakeL = intakeMotors.add("MotorHighSpeed", intakeMotorsLSpeed).getEntry();
+        speedEntryIntakeR = intakeMotors.add("MotorHighSpeed", intakeMotorRSpeed).getEntry();
 
     }
 
