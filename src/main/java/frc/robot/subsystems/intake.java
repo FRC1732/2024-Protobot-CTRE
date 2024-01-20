@@ -24,7 +24,7 @@ public class Intake{
     public static Double intakeMotorRSpeed = 0.50;
 
     
-    public intake() {
+    public Intake() {
         intakeLCanSparkMax = new CANSparkMax(Constants.INTAKE_MOTOR_CAN_ID,  CANSparkMax.MotorType.kBrushless);
         intakeRCanSparkMax = new CANSparkMax(Constants.INTAKE_SECOND_MOTOR_CAN_ID, CANSparkMax.MotorType.kBrushless);
 
@@ -63,8 +63,8 @@ public class Intake{
         intakeMotors.addBoolean("Inverted", () -> intakeRCanSparkMax.getInverted());
         intakeMotors.addDouble("VelocityL", () -> intakeLCanSparkMax.getEncoder().getVelocity());
         intakeMotors.addDouble("VelocityR", () -> intakeRCanSparkMax.getEncoder().getVelocity());
-        intakeMotors.addDouble("AccelerationL",()-> getAcceleration());
-        intakeMotors.addDouble("AccelerationR", ()-> getAcceleration());
+        // intakeMotors.addDouble("AccelerationL",()-> getAcceleration());
+        // intakeMotors.addDouble("AccelerationR", ()-> getAcceleration());
 
 
         speedEntryIntakeL = intakeMotors.add("MotorHighSpeed", intakeMotorsLSpeed).getEntry();
@@ -72,20 +72,20 @@ public class Intake{
 
     }
 
-        double vel = Double.MIN_VALUE;
-        double prev_time = Double.MIN_VALUE;
-        private double getAcceleration();
-        double current_vel = shooterMotorHigh.getEncoder().getVelocity();
-        double acc = 0;
-        if(prev vel == Double.MIN_VALUE){
-            prev_vel=current_vel;
-        }
-        else {
-            acc = (current_vel-prev_vel)/(RobotController.getFGPATime()/60000000.0 - prev_time);   
-        }
+        // double vel = Double.MIN_VALUE;
+        // double prev_time = Double.MIN_VALUE;
+        // private double getAcceleration();
+        // double current_vel = shooterMotorHigh.getEncoder().getVelocity();
+        // double acc = 0;
+        // if(prev vel == Double.MIN_VALUE){
+        //     prev_vel=current_vel;
+        // }
+        // else {
+        //     acc = (current_vel-prev_vel)/(RobotController.getFGPATime()/60000000.0 - prev_time);   
+        // }
         
-        prev_vel = current_vel;
-        prev_time = RobotController.getFPGATime()/60000000.0;
-        return acc;
+        // prev_vel = current_vel;
+        // prev_time = RobotController.getFPGATime()/60000000.0;
+        // return acc;
     
 }
