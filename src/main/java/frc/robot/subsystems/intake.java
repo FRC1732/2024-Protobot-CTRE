@@ -8,7 +8,7 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.hal.CANAPITypes.CANDeviceType;
 import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
-import edu.wpi.first.wpilibj2.command.SubsystemBase; 
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Intake{
