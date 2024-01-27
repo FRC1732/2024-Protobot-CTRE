@@ -9,7 +9,7 @@ import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.wpilibj.RobotController;
 import frc.robot.Constants;
 
-public class Intake{
+public class intake{
     private CANSparkMax intakeLCanSparkMax;
     private CANSparkMax intakeRCanSparkMax;
     private ShuffleboardTab intakeMotors;
@@ -22,7 +22,7 @@ public class Intake{
     public static Double intakeMotorRSpeed = 0.50;
 
     
-    public Intake() {
+    public intake() {
         intakeLCanSparkMax = new CANSparkMax(Constants.INTAKE_MOTOR_CAN_ID,  CANSparkMax.MotorType.kBrushless);
         intakeRCanSparkMax = new CANSparkMax(Constants.INTAKE_SECOND_MOTOR_CAN_ID, CANSparkMax.MotorType.kBrushless);
 
@@ -61,8 +61,8 @@ public class Intake{
         intakeMotors.addBoolean("Inverted", () -> intakeRCanSparkMax.getInverted());
         intakeMotors.addDouble("VelocityL", () -> intakeLCanSparkMax.getEncoder().getVelocity());
         intakeMotors.addDouble("VelocityR", () -> intakeRCanSparkMax.getEncoder().getVelocity());
-        intakeMotors.addDouble("AccelerationL",()-> getAcceleration());
-        intakeMotors.addDouble("AccelerationR", ()-> getAcceleration());
+        // intakeMotors.addDouble("AccelerationL",()-> getAcceleration());
+        // intakeMotors.addDouble("AccelerationR", ()-> getAcceleration());
 
 
         speedEntryIntakeL = intakeMotors.add("MotorHighSpeed", intakeMotorsLSpeed).getEntry();
