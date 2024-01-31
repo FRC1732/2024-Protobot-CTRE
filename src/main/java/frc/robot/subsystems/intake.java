@@ -56,7 +56,7 @@ public class intake{
 
     public void setUpShuffleboard() {
         ShuffleboardTab intakeMotors;
-        intakeMotors = Shuffleboard.getTab("Intake Motors");
+        /*intakeMotors = Shuffleboard.getTab("Intake Motors");
         intakeMotors.addBoolean("Inverted", () -> intakeLCanSparkMax.getInverted());
         intakeMotors.addBoolean("Inverted", () -> intakeRCanSparkMax.getInverted());
         intakeMotors.addDouble("VelocityL", () -> intakeLCanSparkMax.getEncoder().getVelocity());
@@ -67,24 +67,8 @@ public class intake{
 
         speedEntryIntakeL = intakeMotors.add("MotorHighSpeed", intakeMotorsLSpeed).getEntry();
         speedEntryIntakeR = intakeMotors.add("MotorHighSpeed", intakeMotorRSpeed).getEntry();
-
+*/
     }
 
-        private double getAcceleration(){
-        double prev_vel = Double.MIN_VALUE;
-        double prev_time = Double.MIN_VALUE;
-
-        double current_vel = intakeRCanSparkMax.getEncoder().getVelocity();
-        double acc = 0;
-        if(prev_vel == Double.MIN_VALUE){
-            prev_vel=current_vel;
-        }
-        else {
-             acc = (current_vel-prev_vel)/(RobotController.getFPGATime()/60000000.0 - prev_time);   
-        }
         
-        prev_vel = current_vel;
-        prev_time = RobotController.getFPGATime()/60000000.0;
-        return acc;
-        }  
 }

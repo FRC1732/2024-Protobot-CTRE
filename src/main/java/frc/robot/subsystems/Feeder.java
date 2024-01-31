@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.networktables.GenericEntry;
@@ -19,14 +20,14 @@ public class Feeder extends SubsystemBase {
   /** Creates a new Feeder. */
 private CANSparkMax feederMotorLeft;
 private CANSparkMax feederMotorRight;
-public static Double FEEDER_MOTOR_LEFT_SPEED;
-public static Double FEEDER_MOTOR_RIGHT_SPEED;
+public static Double FEEDER_MOTOR_LEFT_SPEED = .3;
+public static Double FEEDER_MOTOR_RIGHT_SPEED = .3;
 private GenericEntry feederLEntry;
 private GenericEntry feederREntry;
 
   public Feeder() {
-    feederMotorLeft = new CANSparkMax(Constants.FEEDER_MOTOR_LEFT_CAN_ID, CANSparkMax.MotorType.kBrushless);
-    feederMotorRight = new CANSparkMax(Constants.FEEDER_MOTOR_RIGHT_CAN_ID, CANSparkMax.MotorType.kBrushless);
+    feederMotorLeft = new CANSparkMax(Constants.FEEDER_MOTOR_LEFT_CAN_ID, CANSparkMax.MotorType.kBrushed);
+    feederMotorRight = new CANSparkMax(Constants.FEEDER_MOTOR_RIGHT_CAN_ID, CANSparkMax.MotorType.kBrushed);
 
     feederMotorLeft.setInverted(Constants.SHOOTER_MOTOR_LEFT_INVERTED);
     feederMotorRight.setInverted(Constants.SHOOTER_MOTOR_RIGHT_INVERTED);
@@ -47,37 +48,24 @@ private GenericEntry feederREntry;
 
   public void setUpShuffleboard() {
     ShuffleboardTab feederMotors;
-    feederMotors = Shuffleboard.getTab("Feeder Motors");
+    /*feederMotors = Shuffleboard.getTab("Feeder Motors");
     feederMotors.addDouble("LeftMotor_Velocity", () -> feederMotorLeft.getEncoder().getVelocity());
     feederMotors.addDouble("RightMotor_Velocity", () -> feederMotorRight.getEncoder().getVelocity());
     feederMotors.addDouble("LeftMotor_Position", () -> feederMotorLeft.getEncoder().getPosition());
     feederMotors.addDouble("RightMotor_Position", () -> feederMotorRight.getEncoder().getPosition());
     feederLEntry = feederMotors.add("Left Feeder Speed", FEEDER_MOTOR_LEFT_SPEED).getEntry();
     feederREntry = feederMotors.add("Right_Feeder_Speed", FEEDER_MOTOR_RIGHT_SPEED).getEntry();
-    
+    */
   
-    feederMotors.addDouble("LeftMotor_Acc", () ->getAcceleration());
+    //feederMotors.addDouble("LeftMotor_Acc", () ->getAcceleration());
   }
 
-  double prev_vel = Double.MIN_VALUE;
-  double prev_time = Double.MIN_VALUE;
-  private double getAcceleration(){
-    double current_vel = feederMotorRight.getEncoder().getVelocity();
-    double acc = 0;
-    if(prev_vel == Double.MIN_VALUE){
-      prev_vel = current_vel;
-    }else{
-       acc = (current_vel - prev_vel)/(RobotController.getFPGATime() / 60000000.0 -prev_time);
-    }
-    prev_vel = current_vel;
-    prev_time = RobotController.getFPGATime() / 60000000.0;
-    return acc;
-  }
+  
 
   @Override
   public void periodic() {
-    FEEDER_MOTOR_LEFT_SPEED = feederLEntry.getDouble(0);
-    FEEDER_MOTOR_RIGHT_SPEED = feederREntry.getDouble(0);
+    //FEEDER_MOTOR_LEFT_SPEED = feederLEntry.getDouble(0);
+    //FEEDER_MOTOR_RIGHT_SPEED = feederREntry.getDouble(0);
     // This method will be called once per scheduler run
   }
 }
