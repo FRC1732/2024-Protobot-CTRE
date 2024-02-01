@@ -10,7 +10,7 @@ import frc.robot.subsystems.Intake;
 public class IntakeNote extends Command {
   private final Intake ourIntake;
 
-  /** Creates a new in. 
+  /** Creates a new IntakeNote. 
    * @param intake The intake subsystem this robot will use
   */
   public IntakeNote(Intake intake) {
