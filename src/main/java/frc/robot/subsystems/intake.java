@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.revrobotics.CANSparkMax;
 
@@ -9,7 +10,7 @@ import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.wpilibj.RobotController;
 import frc.robot.Constants;
 
-public class intake{
+public class intake extends SubsystemBase{
     private CANSparkMax intakeLCanSparkMax;
     private CANSparkMax intakeRCanSparkMax;
     private ShuffleboardTab intakeMotors;
