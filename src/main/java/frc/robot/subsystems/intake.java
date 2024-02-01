@@ -10,7 +10,7 @@ import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.wpilibj.RobotController;
 import frc.robot.Constants;
 
-public class intake extends SubsystemBase{
+public class Intake extends SubsystemBase{
     private CANSparkMax intakeLCanSparkMax;
     private CANSparkMax intakeRCanSparkMax;
     private ShuffleboardTab intakeMotors;
@@ -23,7 +23,7 @@ public class intake extends SubsystemBase{
     public static Double intakeMotorRSpeed = 0.50;
 
     
-    public intake() {
+    public Intake() {
         intakeLCanSparkMax = new CANSparkMax(Constants.INTAKE_MOTOR_CAN_ID,  CANSparkMax.MotorType.kBrushless);
         intakeRCanSparkMax = new CANSparkMax(Constants.INTAKE_SECOND_MOTOR_CAN_ID, CANSparkMax.MotorType.kBrushless);
 
