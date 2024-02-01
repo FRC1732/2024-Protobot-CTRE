@@ -27,7 +27,7 @@ public class Constants {
     public static final int CANCODER_BR = 32;
                     //INVERTED\\
     public static final boolean SHOOTER_MOTOR_HIGH_INVERTED = false;
-    public static final boolean SHOOTER_MOTOR_LOW_INVERTED = false;
+    public static final boolean SHOOTER_MOTOR_LOW_INVERTED = true;
     public static final boolean SHOOTER_MOTOR_TILT_INVERTED = false;
     public static final boolean SHOOTER_MOTOR_LEFT_INVERTED = false;
     public static final boolean SHOOTER_MOTOR_RIGHT_INVERTED = false;
@@ -38,7 +38,9 @@ public class Constants {
    
     //-----------------------INVERTED-----------------------\\
     public static final boolean INTAKE_MOTOR_L_INVERTED = false;
-    public static final boolean INTAKE_MOTOR_R_INVERTED = false;
+    public static final boolean INTAKE_MOTOR_R_INVERTED = true;
+    public static final boolean FEEDER_MOTOR_RIGHT_INVERTED = false;
+    public static final boolean FEEDER_MOTOR_LEFT_INVERTED = true;
 
 
    

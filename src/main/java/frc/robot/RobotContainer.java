@@ -16,7 +16,9 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Feeder;
+import frc.robot.subsystems.Intake;
 
 public class RobotContainer {
   private final double TRAINING_WHEELS = 0.2; // a value between 0 and 1 where 1 is 100%
@@ -24,6 +26,7 @@ public class RobotContainer {
   private double MaxAngularRate = 1.5 * Math.PI; // 3/4 of a rotation per second max angular velocity
   private Shooter shooter = new Shooter();
   private Feeder feeder = new Feeder();
+  private Intake intake = new Intake();
 
   /* Setting up bindings for necessary control of the swerve drive platform */
   private final CommandXboxController joystick = new CommandXboxController(0); // My joystick
@@ -58,6 +61,10 @@ public class RobotContainer {
     //feeder commands
     joystick.y().whileTrue(feeder.run(() -> feeder.runFeederIn()));
     joystick.y().whileFalse(feeder.run(() -> feeder.stopFeederIn()));
+
+    joystick.b().whileTrue(intake.run(() -> intake.takeIN()));
+    joystick.b().whileFalse(intake.run(() -> intake.stop()));
+    
     
     if (Utils.isSimulation()) {
       drivetrain.seedFieldRelative(new Pose2d(new Translation2d(), Rotation2d.fromDegrees(90)));

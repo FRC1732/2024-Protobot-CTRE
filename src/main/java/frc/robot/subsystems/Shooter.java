@@ -24,8 +24,8 @@ public class Shooter extends SubsystemBase {
   /** Creates a new Shooter. */
 
  
-  public static Double SHOOTER_MOTOR_HIGH_SPEED = 0.50;
-  public static Double SHOOTER_MOTOR_LOW_SPEED = 0.50;
+  public static Double SHOOTER_MOTOR_HIGH_SPEED = 0.80;
+  public static Double SHOOTER_MOTOR_LOW_SPEED = 0.80;
   public static Double SHOOTER_MOTOR_TILT_SPEED = 0.50;
 
   public Shooter() {

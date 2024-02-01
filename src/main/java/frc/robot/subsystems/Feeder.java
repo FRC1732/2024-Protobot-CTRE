@@ -29,8 +29,8 @@ private GenericEntry feederREntry;
     feederMotorLeft = new CANSparkMax(Constants.FEEDER_MOTOR_LEFT_CAN_ID, CANSparkMax.MotorType.kBrushed);
     feederMotorRight = new CANSparkMax(Constants.FEEDER_MOTOR_RIGHT_CAN_ID, CANSparkMax.MotorType.kBrushed);
 
-    feederMotorLeft.setInverted(Constants.SHOOTER_MOTOR_LEFT_INVERTED);
-    feederMotorRight.setInverted(Constants.SHOOTER_MOTOR_RIGHT_INVERTED);
+    feederMotorLeft.setInverted(Constants.FEEDER_MOTOR_LEFT_INVERTED);
+    feederMotorRight.setInverted(Constants.FEEDER_MOTOR_RIGHT_INVERTED);
     setUpShuffleboard();
 
   }
